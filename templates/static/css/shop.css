@@ -580,14 +580,6 @@ nav a i {
   cursor: pointer;
 }
 
-footer {
-    background: rgba(3, 95, 98, 0.8);
-    color: #ffffff;
-    text-align: center;
-    padding: 1rem 0;
-    position: relative;
-    z-index: 10;
-}
 
 @keyframes float {
     0% {
@@ -637,5 +629,283 @@ footer {
     
     .shop-section h1 {
         font-size: 2rem;
+    }
+}
+
+footer {
+    background: linear-gradient(135deg, #f55e07 0%, #e54a00 50%, #cc4100 100%);
+    color: #ffffff;
+    padding: 60px 0 30px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+    background-size: 50px 50px;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1.5fr 1.5fr 1fr;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-logo img {
+    max-width: 180px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-logo img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+}
+
+.footer-info,
+.footer-about,
+.footer-services {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.footer-info h4,
+.footer-about h4,
+.footer-services h4 {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-info h4::after,
+.footer-about h4::after,
+.footer-services h4::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, #ffffff, rgba(255, 255, 255, 0.5));
+    border-radius: 2px;
+}
+
+.footer-info p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.footer-about ul,
+.footer-services ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-about li,
+.footer-services li {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 12px;
+    padding: 8px 0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    padding-left: 20px;
+}
+
+.footer-about li::before,
+.footer-services li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+}
+
+.footer-about li:hover,
+.footer-services li:hover {
+    color: #ffffff;
+    transform: translateX(5px);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.footer-about li:hover::before,
+.footer-services li:hover::before {
+    color: #ffffff;
+    transform: scale(1.2);
+}
+
+.social-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 10px;
+}
+
+.social-icons h4 {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.social-icons a {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 22px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.social-icons a:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.social-icons a.facebook:hover { background: rgba(24, 119, 242, 0.8); }
+.social-icons a.linkedin:hover { background: rgba(0, 119, 181, 0.8); }
+.social-icons a.instagram:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.social-icons a.whatsapp:hover { background: rgba(37, 211, 102, 0.8); }
+.social-icons a.email:hover { background: rgba(234, 67, 53, 0.8); }
+
+.footer-bottom {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .footer-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+            
+    .social-icons {
+        grid-column: span 3;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding: 40px 0 20px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .footer-logo {
+        align-items: center;
+    }
+
+    .footer-info p {
+        text-align: center;
+    }
+
+    .social-icons {
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 0;
+    }
+
+    .social-links {
+        gap: 10px;
+    }
+
+    .social-icons a {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-container {
+        padding: 0 15px;
+    }
+
+    .footer-info h4,
+    .footer-about h4,
+    .footer-services h4 {
+        font-size: 18px;
+    }
+
+    .social-links {
+        gap: 8px;
+    }
+
+    .social-icons a {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
     }
 }
