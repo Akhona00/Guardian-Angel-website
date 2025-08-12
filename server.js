@@ -479,6 +479,18 @@ app.get("/about", (req, res) => {
   res.sendFile(path.join(__dirname, "templates", "about.html"));
 });
 
+app.get("/services", (req, res) => {
+  res.sendFile(path.join(__dirname, "templates", "services.html"));
+});
+
+app.get("/contact", (req, res) => {
+  res.sendFile(path.join(__dirname, "templates", "contact.html"));
+});
+
+app.get("/shop", (req, res) => {
+  res.sendFile(path.join(__dirname, "templates", "shop.html"));
+});
+
 //-------------------------------Contacts--------------------//
 // --- Contact Form API ---//
 
@@ -488,14 +500,38 @@ app.post("/api/contact", async (req, res) => {
     return res.status(400).json({ error: "All fields are required." });
   }
   try {
+    // Insert contact into database
     await pool.query(
-      `INSERT INTO contacts (name, email, subject, message) VALUES ($1, $2, $3, $4)`,
+      "INSERT INTO contacts (name, email, subject, message) VALUES ($1, $2, $3, $4)",
       [name, email, subject, message]
     );
-    res.json({ success: true, message: "Contact information saved!" });
+    res.json({ success: true });
   } catch (err) {
     console.error("Error saving contact:", err);
-    res.status(500).json({ error: "Internal server error" });
+    return res.status(500).json({ error: "Failed to save contact." });
+  }
+  try {
+    const formspreeURL = "https://formspree.io/f/mzzgvakl"; // Replace with your Formspree form ID
+
+    const response = await fetch(formspreeURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name,
+        _replyto: email,
+        message,
+      }),
+    });
+
+    if (response.ok) {
+      res.json({ success: "Message sent successfully." });
+    } else {
+      const errorText = await response.text();
+      res.status(500).json({ error: `Formspree error: ${errorText}` });
+    }
+  } catch (error) {
+    console.error("Error sending message:", error);
+    res.status(500).json({ error: "Failed to send message." });
   }
 });
 

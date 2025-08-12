@@ -23,3 +23,20 @@ document.querySelector('.contact-form').addEventListener('submit', async functio
     alert('Server error: ' + err.message);
   }
 });
+
+const data = {
+  name: "Customer Name",
+  _replyto: "customer@example.com",
+  message: "Hello, I have a question...",
+};
+
+fetch("https://formspree.io/f/mzzgvakl", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(data),
+})
+  .then((response) => {
+    if (response.ok) alert("Message sent!");
+    else alert("Failed to send message.");
+  })
+  .catch((error) => console.error(error));

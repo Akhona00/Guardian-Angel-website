@@ -431,7 +431,7 @@ class AdvancedShopManager extends ShopManager {
 
 // Initialize the shop manager when DOM is loaded
 document.addEventListener("DOMContentLoaded", async () => {
-  const STRIPE_PUBLIC_KEY = "";
+  const STRIPE_PUBLIC_KEY = "pk_test_qblFNYngBkEdjEZ16jxxoWSM";
   try {
     window.shopManager = new AdvancedShopManager(STRIPE_PUBLIC_KEY);
     console.log("Shop manager initialized successfully");
