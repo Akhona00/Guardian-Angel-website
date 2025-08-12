@@ -852,7 +852,7 @@ nav a i {
 }
 
 .client-logos div:nth-child(12) {
-  transform: rotateY(360deg) translateZ(288px);
+  transform: rotateY(396deg) translateZ(288px);
 }
 
 @keyframes rotating {
