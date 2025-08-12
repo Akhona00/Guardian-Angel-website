@@ -14,7 +14,7 @@ const port = process.env.PORT || 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static("templates")); // Serve static files from templates directory
+app.use(express.static("templates")); 
 
 
 // Database connection
@@ -160,7 +160,6 @@ async function getOrCreateCart(sessionId) {
   }
 }
 
-// API Routes
 
 // Get all products
 app.get("/api/products", async (req, res) => {
@@ -511,7 +510,7 @@ app.post("/api/contact", async (req, res) => {
     return res.status(500).json({ error: "Failed to save contact." });
   }
   try {
-    const formspreeURL = "https://formspree.io/f/mzzgvakl"; // Replace with your Formspree form ID
+    const formspreeURL = "https://formspree.io/f/mzzgvakl"; 
 
     const response = await fetch(formspreeURL, {
       method: "POST",
